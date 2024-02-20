@@ -15,9 +15,9 @@ import { addToCart } from '../Redux/Slice/cartSlice';
 
 
 function Wishlist() {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
   const wishlistArray = useSelector((state) => state.wishlistReducer) //from store
-  const handleCart=(item)=>{
+  const handleCart = (item) => {
     //add to cart
     dispatch(addToCart(item))
 
@@ -43,9 +43,9 @@ function Wishlist() {
                     Price : ${item.price}
                   </MDBCardText>
                   <div className='d-flex justify-content-center'>
-                    <MDBBtn onClick={()=>dispatch(deleteFromWishlist(item.id))} ><i className='fa-solid fa-trash text-danger'></i>
+                    <MDBBtn onClick={() => dispatch(deleteFromWishlist(item.id))} ><i className='fa-solid fa-trash text-danger'></i>
                     </MDBBtn>
-                    <MDBBtn onClick={()=>handleCart(item)}><i className='fa-solid fa-cart-plus text-success'></i></MDBBtn>
+                    <MDBBtn onClick={() => handleCart(item)}><i className='fa-solid fa-cart-plus text-success'></i></MDBBtn>
                   </div>
                 </MDBCardBody>
               </MDBCard>

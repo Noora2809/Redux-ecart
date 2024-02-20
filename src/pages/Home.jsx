@@ -12,12 +12,13 @@ import {
 } from "mdb-react-ui-kit";
 import { useDispatch } from "react-redux";
 import { addToWishlist } from "../Redux/Slice/wishlistSlice";
+import { addToCart } from "../Redux/Slice/cartSlice";
 
 function Home() {
   const data = useFetch("https://dummyjson.com/products");
   console.log(data);
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
   return (
     <div>
       <MDBRipple
@@ -34,40 +35,39 @@ const dispatch = useDispatch()
       <Row>
         {data?.length > 0
           ? data.map((item) => (
-              <Col>
-                <MDBCard className="m-3 shadow" style={{width:"300px",height:"350px"}}>
-                  <MDBRipple
-                    rippleColor="light"
-                    rippleTag="div"
-                    className="bg-image hover-overlay"
-                  >
-                    <MDBCardImage
-                      src={item.thumbnail}
-                      fluid
-                      alt="..."
-                    />
-                    <a>
-                      <div
-                        className="mask"
-                        style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-                      ></div>
-                    </a>
-                  </MDBRipple>
-                  <MDBCardBody>
-                    <MDBCardTitle>{item.title}</MDBCardTitle>
-                    <MDBCardText>
-                      Price : $ {item.price}
-                    </MDBCardText>
-                    <div className="d-flex justify-content-evenly">
-                    <MDBBtn onClick={()=>dispatch(addToWishlist(item))} className="btn"><i className="fa-solid fa-heart text-danger"></i></MDBBtn>
-                    <MDBBtn className="btn"><i className="fa-solid fa-cart-plus text-success"></i></MDBBtn>
+            <Col>
+              <MDBCard className="m-3 shadow" style={{ width: "300px", height: "350px" }}>
+                <MDBRipple
+                  rippleColor="light"
+                  rippleTag="div"
+                  className="bg-image hover-overlay"
+                >
+                  <MDBCardImage
+                    src={item.thumbnail}
+                    fluid
+                    alt="..."
+                  />
+                  <a>
+                    <div
+                      className="mask"
+                      style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+                    ></div>
+                  </a>
+                </MDBRipple>
+                <MDBCardBody>
+                  <MDBCardTitle>{item.title}</MDBCardTitle>
+                  <MDBCardText>
+                    Price : $ {item.price}
+                  </MDBCardText>
+                  <div className="d-flex justify-content-evenly">
+                    <MDBBtn onClick={() => dispatch(addToWishlist(item))} className="btn"><i className="fa-solid fa-heart text-danger"></i></MDBBtn>
+                    <MDBBtn onClick={() => dispatch(addToCart(item))}><i className="fa-solid fa-cart-plus text-success"></i></MDBBtn>
+                  </div>
 
-                    </div>
-
-                  </MDBCardBody>
-                </MDBCard>
-              </Col>
-            ))
+                </MDBCardBody>
+              </MDBCard>
+            </Col>
+          ))
           : "No data found"}
       </Row>
     </div>

@@ -18,7 +18,7 @@ function Header() {
   const [openBasic, setOpenBasic] = useState(false);
 
   const wishlistArray = useSelector((state) => state.wishlistReducer)
-  const cartArray = useSelector((state)=>state.cartReducer)
+  const cartArray = useSelector((state) => state.cartReducer)
   return (
     <div>
       <MDBNavbar expand="lg" bgColor="light" className="custom-navbar">
@@ -52,7 +52,7 @@ function Header() {
                   <i className="fa-solid fa-cart-plus fs-2 text-success me-4"></i>
                 </a>
                 <Badge bg="secondary">{cartArray.length}</Badge>
-                 </Link>
+              </Link>
             </form>
           </MDBCollapse>
         </MDBContainer>
